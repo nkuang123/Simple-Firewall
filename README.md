@@ -18,17 +18,11 @@ address range, it will match all packets whose IP address falls within the range
 **Efficiency**:
 + We can access the rules of a specific port in constant time. Testing if a packet direction/protocol is supported or not also takes constant time since we stored the information in sets. The meat of the algorithm takes place in determine whether an IP address is supported, which in the worst case takes O(*k*), where *k* is number of IP address ranges supported. All in all, it takes O(*k*) to determine whether a packet is accepted by a firewall, which is not too bad.
 
-**Areas Of Improvement**:
+**Areas Of Improvement**: \
 If memory is not a concern, we could theoretically use a set to represent each IP address in a range of IP addresses. It would take a bit longer to process the CSV and enumerate all IP addresses within a range, but the end result is optimal efficiency of the accept_packet() method, since the IP address lookup will be constant time. This is a classic example of the tradeoff between space & time.
 
-**Testing**:
+**Testing**: \
 Testing was done through the unittest module supported by Python. First, testing was done on the Rule class to confirm functionality before implementing the Firewall class. Firewall class tests were then written afterwards using "rules/test1.csv" as the ruleset. To test, run the following command in the top-most directory:
 ```
-python -m unittest discover -v
+> python -m unittest discover -v
 ```
-
-   
-
-
-
-		- 
