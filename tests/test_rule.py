@@ -1,3 +1,4 @@
+# Author: Norman Kuang
 # Unit tests for testing Rule implementation
 
 import unittest
