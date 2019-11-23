@@ -18,11 +18,14 @@ address range, it will match all packets whose IP address falls within the range
 **Efficiency**:
 + We can access the rules of a specific port in constant time. Testing if a packet direction/protocol is supported or not also takes constant time since we stored the information in sets. The meat of the algorithm takes place in determine whether an IP address is supported, which in the worst case takes O(*k*), where *k* is number of IP address ranges supported. All in all, it takes O(*k*) to determine whether a packet is accepted by a firewall, which is not too bad.
 
-**Areas Of Improvement**: \
-If memory is not a concern, we could theoretically use a set to represent each IP address in a range of IP addresses. It would take a bit longer to process the CSV and enumerate all IP addresses within a range, but the end result is optimal efficiency of the accept_packet() method, since the IP address lookup will be constant time. This is a classic example of the tradeoff between space & time.
+**Areas Of Improvement**: 
++ If memory is not a concern, we could theoretically use a set to represent each IP address in a range of IP addresses. It would take a bit longer to process the CSV and enumerate all IP addresses within a range, but the end result is optimal efficiency of the accept_packet() method, since the IP address lookup will be constant time. This is a classic example of the tradeoff between space & time.
 
-**Testing**: \
-Testing was done through the unittest module supported by Python. First, testing was done on the Rule class to confirm functionality before implementing the Firewall class. Firewall class tests were then written afterwards using "rules/test1.csv" as the ruleset. To test, run the following command in the top-most directory:
+**Testing**: 
++ Testing was done through the unittest module supported by Python. First, testing was done on the Rule class to confirm functionality before implementing the Firewall class. Firewall class tests were then written afterwards using "rules/test1.csv" as the ruleset. To test, run the following command in the top-most directory:
 ```
 > python -m unittest discover -v
 ```
+
+## Teams of Interest ##
++ The teams that interest me the most are the Platform and Data teams. Specifcally for the Platform team, working directly on the system infrastructure and finding bottlenecks in the caching layer are the most intriguing to me. I'd like to acquire a deeper knowledge on how to design systems around these bottlenecks. On the Data team, I would like to work directly with the core data instructure. This includes the entire process in determining what data to extract, how to extract that data, and making it as efficient as possible. As you may notice from my comments, system design is one of the areas I am most interested in, and it would be an invaluable experience from an engineering perspective if I was given the opportunity to work on Illumio's systems. 
