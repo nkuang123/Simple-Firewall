@@ -9,5 +9,7 @@ address range, it will match all packets whose IP address falls within the range
 **Design Thoughts**:
 + How do we want to represent the firewall rules?
 	- The simplest representation is to build an array of strings, with each
-	string representing a firewall rule. There are few problems with this representation. One, looking up a rule takes linear time, with does not scale well with large rulesets. Second, we'd have to do some additional parsing each time we cross-check a packet with the rule set. 
-	- Because we desire fast lookups into the ruleset, another idea is to represent the ruleset using hash tables. We can either use the port or the IP address as a key into the hash table, with each key mapping to their respective rules. Ultimately, I chose to use the port number as a key into the ruleset as 65535 possible ports is much less than 2<sup>32</sup>.
+	string representing a firewall rule. There are few problems with this representation. One, looking up a rule takes linear time, with does not scale well with large rulesets. Second, we'd have to do some additional parsing each time we cross-check a packet with the rule set. Memory also scales linearly with respect to the number of rules in the ruleset. 
+	- Because we desire fast lookups into the ruleset, another idea is to represent the ruleset using hash tables which have constant lookup times. We can either use the port or the IP address as a key into the hash table, with each key mapping to their respective rules. 
+	- Ultimately, I chose to use the port number as a key into the ruleset as 65535 possible ports is much, much less than 2<sup>32</sup> possible IP addresses, with each port number mapping to a Rule object. Because the data relationship is **integer->Rule**, we can stick to an array and index with the port number. Thus, we'll represent the firewall ruleset with an array with 65536 entries (1 for each port), with each entry containing a Rule object.
+	
