@@ -22,7 +22,7 @@ address range, it will match all packets whose IP address falls within the range
 + If memory is not a concern, we could theoretically use a set to represent each IP address in a range of IP addresses. It would take a bit longer to process the CSV and enumerate all IP addresses within a range, but the end result is optimal efficiency of the accept_packet() method, since the IP address lookup will be constant time. This is a classic example of the tradeoff between space & time.
 
 **Testing**: 
-+ Testing was done through the unittest module supported by Python. First, testing was done on the Rule class to confirm functionality before implementing the Firewall class. Firewall class tests were then written afterwards using "rules/test1.csv" as the ruleset. To test, run the following command in the top-most directory:
++ Testing was done through the `unittest` module supported by Python. First, testing was done on the Rule class to confirm functionality before implementing the Firewall class. Firewall class tests were then written afterwards using "rules/test1.csv" as the ruleset. To test, run the following command in the top-most directory:
 ```
 > python -m unittest discover -v
 ```
